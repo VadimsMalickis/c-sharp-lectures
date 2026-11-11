@@ -369,21 +369,8 @@ Pasūtījumi
 
 ---
 
-# Redzamības modifikatori
 
-Redzamības modifikatori nosaka, kur objektiem un metodēm drīkst piekļūt.
-
----
-
-# Public
-
-Pieejams visur.
-
-```csharp
-public string Name;
-```
-
-Piemērs:
+Pareizi:
 
 ```csharp
 Person person = new Person();
@@ -391,35 +378,68 @@ Person person = new Person();
 person.Name = "Anna";
 ```
 
-Tas strādā, jo lauks ir `public`.
+---
+
+## 2. Piekļuve private laukam
+
+Nepareizi:
+
+```csharp
+person.age = 18;
+```
+
+Ja `age` ir `private`.
 
 ---
 
-# Private
+## 3. Statiska metode mēģina izmantot nestatisku lauku
 
-Pieejams tikai pašas klases iekšienē.
-
-```csharp
-private int age;
-```
-
-Piemērs:
+Nepareizi:
 
 ```csharp
-class Person
+public static void Show()
 {
-    private int age;
+    Console.WriteLine(Name);
 }
 ```
 
-Šāds kods radīs kļūdu:
+Ja `Name` nav statisks.
 
-```csharp
-Person p = new Person();
+---
 
-p.age = 18;
-```
+# Kontroljautājumi
 
-Kļūda:
+1. Kas ir klase?
+2. Kas ir objekts?
+3. Ko nozīmē `static`?
+4. Kad izmantot statisku lauku?
+5. Kad izmantot objektu laukus?
+6. Ar ko atšķiras statiska un nestatiska metode?
+7. Ko dara modifikators `public`?
+8. Ko dara modifikators `private`?
+9. Kāpēc bieži izmanto `private` laukus?
+10. Vai statiskai metodei nepieciešams objekts?
 
-```text
+---
+
+# Kopsavilkums
+
+✅ Klase ir objekta veidne.
+
+✅ Objekts ir klases instance.
+
+✅ Nestatiski lauki pieder katram objektam atsevišķi.
+
+✅ Statiski lauki pieder visai klasei.
+
+✅ Statiskas metodes izsauc caur klasi.
+
+✅ Nestatiskas metodes izsauc caur objektu.
+
+✅ `public` ļauj piekļūt no jebkuras vietas.
+
+✅ `private` ļauj piekļūt tikai pašas klases iekšienē.
+
+✅ `static` izmanto kopīgiem datiem un darbībām.
+
+✅ Objektus izmanto, ja katram elementam nepieciešami savi dati.
